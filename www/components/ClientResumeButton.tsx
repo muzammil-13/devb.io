@@ -25,7 +25,9 @@ export default function ClientResumeButton({ username }: { username: string }) {
       const a = document.createElement("a");
       a.href = url;
       a.download = `${username}-resume.pdf`;
+      document.body.appendChild(a);
       a.click();
+      document.body.removeChild(a);
       URL.revokeObjectURL(url);
     } catch (error) {
       console.error("Error downloading resume:", error);
